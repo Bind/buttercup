@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,  get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.views.generic import ListView, DetailView
 from app.models import location, photo
-
 
 
 
@@ -35,16 +34,33 @@ def gallery(request):
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
 
-
-
-class LocationView(ListView):
+class LookHereView(ListView):
     template_name = 'gallery.html'
+    model=location
 
-    def get_queryset(self):
-        self.location = get_object_or_404(location, name=self.args)
-        return photo.objects.filter(location=self.location)
+    def get_context_data(self, **kwargs):
+        context = super(LookHereView, self).get_context_data(**kwargs)
+        context['landscapes'] =  location.objects.filter(architecture="L")
+        context['hardscapes'] = location.objects.filter(architecture="H")
+        return context
+
+
+class LocationView(DetailView):
+    template_name = 'location.html'
+    model = location
+    slug_field = 'slug_url'
+    slug_url_kwarg = 'name'
 
     def get_context_data(self, **kwargs):
         context = super(LocationView, self).get_context_data(**kwargs)
+        self.location = get_object_or_404(location, slug_url=self.kwargs['name'])
+        context['photos'] = photo.objects.filter(location=self.location)
+        context['landscapes'] =  location.objects.filter(architecture="L")
+        context['hardscapes'] = location.objects.filter(architecture="H")
         context['location'] = self.location
+
         return context
+
+
+
+
