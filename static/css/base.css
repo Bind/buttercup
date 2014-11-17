@@ -59,8 +59,7 @@ img{
 }
 img.bottom{
     float: none;
-    display:block;
-    margin: 0px auto;
+    align: middle;
 }
 .link-container{
     float:right;
@@ -72,7 +71,7 @@ font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 13px;
 letter-spacing: 1.5px;
-    
+
 }
 a{
 color: #FFFFFF;
