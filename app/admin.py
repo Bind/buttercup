@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import location, photo
+from app.models import location, photo, media
 
 
 class PhotoInline(admin.StackedInline):
