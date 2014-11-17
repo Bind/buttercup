@@ -4,6 +4,24 @@
 Buttercup Design Group
 {% endblock title %}
 
+{% block sidebar %}
+<h5><a href="/">HOME</a> </h5>
+
+<h3>Land Scapes</h3>
+{% for location in landscapes %}
+<h5><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></h5>
+{% endfor %}
+<h3> Hard Scapes </h3>
+{% for location in hardscapes %}
+<h5><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></h5>
+{% endfor %}
+<h3><a href="/about">We Are</a> </h3>
+<h3><a href="/">Media</a> </h3>
+<h3><a href="/">Contact</a> </h3>
+
+
+
+{% endblock %}
 {% block content %}
 
 {% for photo in photos%}
