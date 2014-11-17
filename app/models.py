@@ -10,6 +10,14 @@ def upload_to_s3(instance, filename):
         filename_base,
         filename_ext.lower(),
     )
+def upload_to_media(instance, filename):
+    import os
+    from django.utils.timezone import now
+    filename_base, filename_ext = os.path.splitext(filename)
+    return 'photos/%s%s%s' % (instance.title,
+        filename_base,
+        filename_ext.lower(),
+    )
 
 
 
@@ -39,3 +47,11 @@ class photo(models.Model):
         class Meta:
             ordering = ["order"]
 
+class media(models.Model):
+        url = models.URLField(max_length=255, null=True, blank=True)
+        title = models.CharField(max_length=255, null=True, blank=True)
+        display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True)
+        order = models.IntegerField(null=True, blank=True)
+
+        class Meta: 
+            ordering = ["order"]

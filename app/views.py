@@ -2,7 +2,7 @@ from django.shortcuts import render,  get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.views.generic import ListView, DetailView
-from app.models import location, photo
+from app.models import location, photo, media
 
 
 
@@ -21,13 +21,6 @@ def about(request):
     return HttpResponse(template.render(context))
 
 
-def media(request):
-    template = loader.get_template('media.html')
-    context = RequestContext(request, {})
-    return HttpResponse(template.render(context))
-
-
-
 
 def gallery(request):
     template = loader.get_template('gallery.html')
@@ -42,6 +35,18 @@ class LookHereView(ListView):
         context = super(LookHereView, self).get_context_data(**kwargs)
         context['landscapes'] =  location.objects.filter(architecture="L")
         context['hardscapes'] = location.objects.filter(architecture="H")
+        return context
+
+
+class MediaView(ListView):
+    template_name = 'media.html'
+    model = media
+
+    def get_context_data(self, **kwargs):
+        context = super(MediaView, self).get_context_data(**kwargs)
+        context['landscapes'] =  location.objects.filter(architecture="L")
+        context['hardscapes'] = location.objects.filter(architecture="H")
+        context['media'] = media.objects.all()
         return context
 
 
