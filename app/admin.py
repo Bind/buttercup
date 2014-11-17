@@ -11,6 +11,7 @@ class LocationAdmin(admin.ModelAdmin):
     inlines = [PhotoInline]
 
 admin.site.register(photo)
+admin.site.register(media)
 admin.site.register(location, LocationAdmin)
 
 
