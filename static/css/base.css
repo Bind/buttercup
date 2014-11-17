@@ -68,10 +68,14 @@ img.bottom{
     margin-top: 1em;
 }
 
-a{
-    margin-left: 13px;
-    font-family: Arial, Helvetica, sans-serif;
+.front-link{
 font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 13px;
+letter-spacing: 1.5px;
+    
+}
+a{
 color: #FFFFFF;
 letter-spacing: 1.5px;
 text-decoration: none;
@@ -79,9 +83,7 @@ text-decoration: none;
 
 a:visited{
     font-family: Arial, Helvetica, sans-serif;
-font-size: 13px;
 color: #FFFFFF;
-letter-spacing: 1.5px;
 text-decoration: none;
 }
 
