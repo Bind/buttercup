@@ -5,10 +5,7 @@ Buttercup Design Group
 {% endblock title %}
 
 {% block content %}
-<h5><a href="/">HOME</a> </h5>
-{%  for location in landscapes %}
-<h5><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></h5>
-{% endfor %}
+
 {% for photo in photos%}
 <img src="  
 https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}"> 
