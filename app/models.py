@@ -6,8 +6,8 @@ def upload_to_s3(instance, filename):
     import os
     from django.utils.timezone import now
     filename_base, filename_ext = os.path.splitext(filename)
-    return 'photos/%s%s' % (
-        now().strftime("%Y%m%d%H%M%S"),
+    return 'photos/%s%s%s' % (instance.location.name,
+        filename_base,
         filename_ext.lower(),
     )
 
@@ -30,6 +30,7 @@ class location(models.Model):
 
 class photo(models.Model):
         url = models.CharField(max_length=255, null=True, blank=True)
+        name = models.CharField(max_length=255, null=True, blank=True)
         display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True)
         order = models.IntegerField(null=True, blank=True)
         location = models.ForeignKey(location, null=True, blank=True)
