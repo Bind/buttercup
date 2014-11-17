@@ -118,4 +118,13 @@ font-size: 14px;
     top: 25px;
     background-color:#cc0000;
 }
+.location-gallery{
+margin: 0 auto;
+}
+.location-gallery img{
+    margin-right:1em;
+}
+.location-gallery img:last-of-type{
+    margin-right:0;
+}
 
