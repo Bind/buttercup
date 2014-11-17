@@ -50,7 +50,7 @@ class photo(models.Model):
 class media(models.Model):
         url = models.URLField(max_length=255, null=True, blank=True)
         title = models.CharField(max_length=255, null=True, blank=True)
-        display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True)
+        display = models.ImageField(upload_to=upload_to_media, blank=True,null=True)
         order = models.IntegerField(null=True, blank=True)
 
         class Meta: 
