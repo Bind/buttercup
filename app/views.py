@@ -39,18 +39,19 @@ class LookHereView(ListView):
 
 class LandScapeView(ListView):
     template_name = 'gallery.html'
-    model = photo
+    model = location
 
     def get_context_data(self, **kwargs):
         context = super(LandScapeView, self).get_context_data(**kwargs)
         context['landscapes'] =  location.objects.filter(architecture="L")
         context['hardscapes'] = location.objects.filter(architecture="H")
         photos = photo.objects.filter(Splash="L")
-        context['location'] = photos
+        context['photos'] = photos
+        return context
 
 class HardScapeView(ListView):
     template_name = 'gallery.html'
-    model = photo
+    model = location
 
     def get_context_data(self, **kwargs):
         context = super(HardScapeView, self).get_context_data(**kwargs)
@@ -58,6 +59,7 @@ class HardScapeView(ListView):
         context['hardscapes'] = location.objects.filter(architecture="H")
         photos = photo.objects.filter(Splash="H")
         context['photos'] = photos
+        return context
 
 
 class MediaView(ListView):
