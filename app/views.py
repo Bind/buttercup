@@ -53,7 +53,7 @@ class HardScapeView(LookHereView):
     def get_context_data(self, **kwargs):
         context = super(HardScapeView, self).get_context_data(**kwargs)
         photos = photo.objects.filter(Splash="H")
-        context['location'] = photos
+        context['photos'] = photos
 
 
 class MediaView(ListView):
