@@ -44,6 +44,12 @@ class photo(models.Model):
         location = models.ForeignKey(location, null=True, blank=True)
         rollover = models.CharField(max_length=255, null=True, blank=True)
 
+        SplashTypes = (
+            ('L', 'LandScapes'),
+            ('H', 'HardScapes')
+            )
+        Splash = models.CharField(max_length=1, choices=SplashTypes, null=True, blank=True)
+
         class Meta:
             ordering = ["order"]
 

@@ -6,5 +6,6 @@ urlpatterns = patterns('',
     url(r'^about/', views.about, name="about"),
     url(r'^media/', views.MediaView.as_view()),
     url(r'^location/(?P<name>[\w-]+)/$', views.LocationView.as_view()),
-    url(r'^look_here/', views.LookHereView.as_view()),
+    url(r'^hardscapes/', views.HardScapeView.as_view()),
+    url(r'^landscapes/', views.LandScapeView.as_view()),
     )

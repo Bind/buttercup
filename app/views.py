@@ -37,6 +37,24 @@ class LookHereView(ListView):
         context['hardscapes'] = location.objects.filter(architecture="H")
         return context
 
+class LandScapeView(LookHereView):
+    template_name = 'gallery.html'
+    model = photo
+
+    def get_context_data(self, **kwargs):
+        context = super(LandScapeView, self).get_context_data(**kwargs)
+        photos = photo.objects.filter(Splash="L")
+        context['location'] = photos
+
+class HardScapeView(LookHereView):
+    template_name = 'gallery.html'
+    model = photo
+
+    def get_context_data(self, **kwargs):
+        context = super(HardScapeView, self).get_context_data(**kwargs)
+        photos = photo.objects.filter(Splash="H")
+        context['location'] = photos
+
 
 class MediaView(ListView):
     template_name = 'media.html'
