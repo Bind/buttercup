@@ -43,6 +43,8 @@ class LandScapeView(LookHereView):
 
     def get_context_data(self, **kwargs):
         context = super(LandScapeView, self).get_context_data(**kwargs)
+        context['landscapes'] =  location.objects.filter(architecture="L")
+        context['hardscapes'] = location.objects.filter(architecture="H")
         photos = photo.objects.filter(Splash="L")
         context['location'] = photos
 
@@ -52,6 +54,8 @@ class HardScapeView(LookHereView):
 
     def get_context_data(self, **kwargs):
         context = super(HardScapeView, self).get_context_data(**kwargs)
+        context['landscapes'] =  location.objects.filter(architecture="L")
+        context['hardscapes'] = location.objects.filter(architecture="H")
         photos = photo.objects.filter(Splash="H")
         context['photos'] = photos
 
