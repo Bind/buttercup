@@ -37,7 +37,7 @@ class LookHereView(ListView):
         context['hardscapes'] = location.objects.filter(architecture="H")
         return context
 
-class LandScapeView(LookHereView):
+class LandScapeView(ListView):
     template_name = 'gallery.html'
     model = photo
 
@@ -48,7 +48,7 @@ class LandScapeView(LookHereView):
         photos = photo.objects.filter(Splash="L")
         context['location'] = photos
 
-class HardScapeView(LookHereView):
+class HardScapeView(ListView):
     template_name = 'gallery.html'
     model = photo
 
