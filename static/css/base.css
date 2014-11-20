@@ -124,6 +124,10 @@ font-size: 14px;
     width: 842px;
 margin: 0 auto;
 }
+.location-gallery h1{
+    margin-top: 0px;
+}
+
 .location-gallery img{
     margin-right:.5em;
     margin-bottom:.5em;
