@@ -14,7 +14,7 @@ def upload_to_media(instance, filename):
     import os
     from django.utils.timezone import now
     filename_base, filename_ext = os.path.splitext(filename)
-    return 'photos/%s%s%s' % (instance.title,
+    return 'photos/%s%s%s' % (instance.name,
         filename_base,
         filename_ext.lower(),
     )
