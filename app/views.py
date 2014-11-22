@@ -45,7 +45,7 @@ class LandScapeView(ListView):
         context = super(LandScapeView, self).get_context_data(**kwargs)
         context['landscapes'] =  location.objects.filter(architecture="L")
         context['hardscapes'] = location.objects.filter(architecture="H")
-        photos = photo.objects.filter(Splash="L")
+        photos = photo.objects.filter(Splash="L").order_by('order')
         context['photos'] = photos
         return context
 
@@ -57,7 +57,7 @@ class HardScapeView(ListView):
         context = super(HardScapeView, self).get_context_data(**kwargs)
         context['landscapes'] =  location.objects.filter(architecture="L")
         context['hardscapes'] = location.objects.filter(architecture="H")
-        photos = photo.objects.filter(Splash="H")
+        photos = photo.objects.filter(Splash="H").order_by('order')
         context['photos'] = photos
         return context
 
@@ -70,7 +70,7 @@ class MediaView(ListView):
         context = super(MediaView, self).get_context_data(**kwargs)
         context['landscapes'] =  location.objects.filter(architecture="L")
         context['hardscapes'] = location.objects.filter(architecture="H")
-        context['media'] = media.objects.all()
+        context['media'] = media.objects.all().order_by('order')
         return context
 
 
@@ -83,7 +83,7 @@ class LocationView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(LocationView, self).get_context_data(**kwargs)
         self.location = get_object_or_404(location, slug_url=self.kwargs['name'])
-        context['photos'] = photo.objects.filter(location=self.location)
+        context['photos'] = photo.objects.filter(location=self.location).order_by('order')
         context['landscapes'] =  location.objects.filter(architecture="L")
         context['hardscapes'] = location.objects.filter(architecture="H")
         context['location'] = self.location
