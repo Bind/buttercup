@@ -37,8 +37,7 @@ class location(models.Model):
 
 
 class photo(models.Model):
-        url = models.CharField(max_length=255, null=True, blank=True)
-        name = models.CharField(max_length=255, null=True, blank=True)
+        name = models.CharField(max_length=255)
         display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True)
         order = models.IntegerField(null=True, blank=True)
         location = models.ForeignKey(location, null=True, blank=True)
