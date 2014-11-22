@@ -47,11 +47,11 @@ class LandScapeView(ListView):
         context['hardscapes'] = location.objects.filter(architecture="H")
         photos = photo.objects.filter(Splash="L").order_by('order')
         context['photos'] = photos
-        context['title'] = 'LandScapes'
+        context['title'] = 'LANDSCAPES'
         return context
 
 class HardScapeView(ListView):
-    template_name = 'gallery.html'
+    template_name = 'location.html'
     model = location
 
     def get_context_data(self, **kwargs):
@@ -60,7 +60,7 @@ class HardScapeView(ListView):
         context['hardscapes'] = location.objects.filter(architecture="H")
         photos = photo.objects.filter(Splash="H").order_by('order')
         context['photos'] = photos
-        context['title'] = 'HardScapes'
+        context['title'] = 'HARDSCAPES'
         return context
 
 
