@@ -18,7 +18,15 @@
     <meta name="viewport" content="width=945px, initial-scale=.3, maximum-scale=1" >
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="/static/css/base.css" rel="stylesheet" type="text/css">
-  
+  <!-- OWL -->
+
+<!-- Important Owl stylesheet -->
+<link rel="stylesheet" href="/static/css/owl.carousel.css">
+ 
+<!-- Default Theme -->
+<link rel="stylesheet" href="/static/css/owl.theme.css">
+
+
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <body>
@@ -33,5 +41,36 @@
   </div>  
   </div>
   </body>
-  
+    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/owl.carousel.js"></script>
+<script type="text/javascript" >
+  $(document).ready(function() {
+
+   
+
+
+var nextImage = function() {
+
+            var shown = $(".item.active").data("order")
+
+      console.log(shown)
+            $(".item.active").addClass('hide')
+            $(".item.active").removeClass("active")
+
+            if (shown == 4){
+              $(".item.hide").removeClass('hide')
+              $(".item[data-order='0']").addClass('active')
+
+
+            } else {
+              $(".item[data-order='"+ (shown + 1) +"']").addClass('active')  
+            }
+
+}
+
+      $(".dissolve-wrapper").click(nextImage);
+        setInterval(nextImage, 7000)
+ 
+});
+</script>
 </html>
