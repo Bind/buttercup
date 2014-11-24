@@ -75,7 +75,7 @@ margin:0px;}
     padding-top: 1em;
     font-size:16px;
     width: 400px;
-    letter-spacing: 1.5px;
+letter-spacing: 1.5px;
 }
 .quote-text{
     padding-top: 35px;
@@ -154,6 +154,14 @@ font-size: 14px;
     position:absolute;
     right: 0;
     top: 25px;
+}
+.sidebar p{
+    margin:0px;
+cursor: auto;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14px;
+height: auto;
+line-height: 17.5px;
 }
 .location-gallery{
     width: 842px;
