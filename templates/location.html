@@ -7,11 +7,11 @@ Buttercup Design Group
 {% block sidebar %}
 <h3><a href="/">HOME</a> </h5>
 
-<h3><a href="/landscapes/">LANDSCAPES</a></h3>
+<p><a href="/landscapes/">LANDSCAPES</a></p>
 {% for location in landscapes %}
 <p><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
 {% endfor %}
-<h3><a href ="/hardscapes/"> HARDSCAPES </a></h3>
+<p><a href ="/hardscapes/"> HARDSCAPES </a></p>
 {% for location in hardscapes %}
 <p><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
 {% endfor %}
