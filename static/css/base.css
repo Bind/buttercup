@@ -163,6 +163,9 @@ font-size: 14px;
 height: auto;
 line-height: 17.5px;
 }
+p.location{
+    text-transform:lowercase;
+}
 .location-gallery{
     width: 842px;
 margin: 45px auto;

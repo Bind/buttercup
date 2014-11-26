@@ -9,11 +9,11 @@ Buttercup Design Group
 
 <p><a href="/landscapes/">LANDSCAPES</a></p>
 {% for location in landscapes %}
-<p><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
+<p class='location'><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
 {% endfor %}<br />
 <p><a href ="/hardscapes/"> HARDSCAPES </a></p>
 {% for location in hardscapes %}
-<p><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
+<p class='location'><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
 {% endfor %}
 <h3><a href="/about">We Are</a> </h3>
 <h3><a href="/">Media</a> </h3>
