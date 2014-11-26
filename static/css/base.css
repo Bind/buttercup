@@ -42,7 +42,8 @@ p, h1, h2, h3, h4, h5{
   -moz-transition: opacity 2s ease-in-out;
   -o-transition: opacity 2s ease-in-out;
   transition: opacity 2s ease-in-out;
-  height:550px;
+  top: 22vw;
+  height:calc(100% + 22vw);
 }
 
 .hide{
