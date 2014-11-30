@@ -28,8 +28,8 @@ Buttercup Design Group
 
 {% for photo in photos%}
 
-{% thumbnail item.image "100x100" crop="center" as im %}
-    <img src="https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.dipslay }}" width="{{ 270}}" height="{{ 180s }}">
+{% thumbnail photo.display "100x100" crop="center" as im %}
+    <img src="https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ im.url }}" width="{{ 270}}" height="{{ 180 }}">
 {% endthumbnail %}
 
 {% endfor %}

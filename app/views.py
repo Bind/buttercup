@@ -85,13 +85,21 @@ class LocationView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(LocationView, self).get_context_data(**kwargs)
         self.location = get_object_or_404(location, slug_url=self.kwargs['name'])
-        context['photos'] = photo.objects.filter(location=self.location).order_by('order')
+        context['photos'] = photo.objects.filter(location=self.location)
         context['landscapes'] =  location.objects.filter(architecture="L")
         context['hardscapes'] = location.objects.filter(architecture="H")
         context['location'] = self.location
         context['title'] = self.location.name
         return context
 
+class PhotoView(detailView):
+    template_name= 'photo.html'
+    model = photo
+    slug_field = "slug_url"
+    slug_url_kwarg = "name"
 
+    def get_context_data(self, **kwargs):
+        context = super(PhotoView, self).get_context_data(*kwargs)
+        return context
 
 
