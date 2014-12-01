@@ -92,7 +92,7 @@ class LocationView(DetailView):
         context['title'] = self.location.name
         return context
 
-class PhotoView(detailView):
+class PhotoView(DetailView):
     template_name= 'photo.html'
     model = photo
     slug_field = "slug_url"
