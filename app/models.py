@@ -43,7 +43,7 @@ class photo(models.Model):
         order = models.IntegerField(null=True, blank=True)
         location = models.ForeignKey(location, null=True, blank=True)
         rollover = models.CharField(max_length=255, null=True, blank=True)
-        detai = models.CharField(max_length=512, null=True, blank=True)
+        detail = models.CharField(max_length=512, null=True, blank=True)
         SplashTypes = (
             ('L', 'LandScapes'),
             ('H', 'HardScapes')

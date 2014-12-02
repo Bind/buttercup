@@ -138,6 +138,8 @@ a:hover{
     border-bottom: 1px white solid;
 }
 .about{
+    margin: 0 auto;
+    width:796px;
     padding-top:6em;
 }
 
@@ -195,6 +197,7 @@ margin: 45px auto;
 .magazine-gallery{
 width: 792px;
 
+    padding-top:2.5em;
 
 margin: 0 auto;
 }
@@ -202,6 +205,36 @@ margin: 0 auto;
     margin-right:2em;
     margin-bottom:2em;
 }
-.magazine-gallery img:nth-of-type(3){
+.magazine-gallery img:nth-of-type(3n){
     margin-right:0;
+}
+
+.ribbon {
+    z-index:1000;
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+
+    position: absolute;
+  left: -50px;
+  top: 45px;
+  -webkit-transform: rotate(-45deg);
+     -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+       -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+    -webkit-box-shadow: 0 0 10px #888;
+     -moz-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+}
+.ribbon a {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  font: bold 81.25% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 1px 0;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 0 5px #444;
 }

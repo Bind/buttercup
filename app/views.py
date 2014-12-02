@@ -96,10 +96,11 @@ class PhotoView(DetailView):
     template_name= 'photo.html'
     model = photo
     slug_field = "slug_url"
-    slug_url_kwarg = "name"
+    slug_url_kwarg = "photo_name"
 
     def get_context_data(self, **kwargs):
         context = super(PhotoView, self).get_context_data(*kwargs)
+        self.photo = get_object_or_404(photo, order=self.kwargs['photo_number'])
         return context
 
 

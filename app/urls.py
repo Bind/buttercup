@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^location/(?P<name>[\w-]+)/$', views.LocationView.as_view()),
     url(r'^hardscapes/', views.HardScapeView.as_view()),
     url(r'^landscapes/', views.LandScapeView.as_view()),
+    url(r'^location/(?P<name>[\w-]+)/(?P<photo_number>[\w-]+)/$', views.PhotoView.as_view()),
     )
