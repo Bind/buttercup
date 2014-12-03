@@ -39,7 +39,9 @@
 <script type="text/javascript" >
   $(document).ready(function() {
 
-   
+       $('img').load(function() {
+        $(this).removeClass('loading')
+    });
 
 
 var nextImage = function() {
@@ -60,6 +62,8 @@ var nextImage = function() {
             }
 
 }
+
+
 
       $(".dissolve-wrapper").click(nextImage);
         setInterval(nextImage, 4000)
