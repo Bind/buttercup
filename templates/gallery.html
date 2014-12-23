@@ -5,32 +5,46 @@
 Buttercup Design Group
 {% endblock title %}
 
-{% block sidebar %}
-<h3><a href="/">HOME</a> </h5>
-
-<h3><a href="/landscapes/">LANDSCAPES</a></h3>
-{% for location in landscapes %}
-<p class="location"><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
-{% endfor %}
-<h3><a href ="/hardscapes/"> HARDSCAPES </a></h3>
-{% for location in hardscapes %}
-<p class="location"><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
-{% endfor %}
-<h3><a href="/about">We Are</a> </h3>
-<h3><a href="/media">Media</a> </h3>
-<h3><a href="/">Contact</a> </h3>
-
-
-
-{% endblock %}
 {% block content %}
 <div class="location-gallery">
+<div class="photogroup-nav">
+<a class="image-link" href="/{{prefix}}s"><div class="backbutton"></div></a>
+{{location.name}}
+
+</div>
 {% for photo in photos%}
-
-{% thumbnail item.image "100x100" crop="center" as im %}
-    <img src="https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.dipslay }}" width="{{ 270}}" height="{{ 180s }}">
-{% endthumbnail %}
-
+<div class="hero-image-wrapper">
+    <a href="/{{prefix}}/{{location.slug_url}}/{{photo.slug_url}}">
+        <div class="image" style="background-image:url('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}');"></div>
+    </a>
+</div>
 {% endfor %}
+
+{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/{{prefix}}/{{location.slug_url}}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                {% if page_obj.has_previous and page_obj.has_next%}
+                <span>|</span> 
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a href="/{{prefix}}/{{location.slug_url}}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
 </div>
 {% endblock content %}
+{% block script %}
+
+$('.homeblock').click(function(){
+    window.location.href = '/';
+})
+{% endblock %}
+
+
+{% block home %}
+<div class="homeblock"></div>
+{% endblock %}

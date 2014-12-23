@@ -7,15 +7,6 @@ Buttercup Design Group
 
 {% block sidebar %}
 <h3><a href="/">HOME</a> </h5>
-
-<p><a href="/landscapes/">LANDSCAPES</a></p>
-{% for location in landscapes %}
-<p class='location'><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
-{% endfor %}<br />
-<p><a href ="/hardscapes/"> HARDSCAPES </a></p>
-{% for location in hardscapes %}
-<p class='location'><a href="/location/{{ location.slug_url }}"> {{ location.name }} </a></p>
-{% endfor %}
 <h3><a href="/about">We Are</a> </h3>
 <h3><a href="/media">Media</a> </h3>
 <h3><a href="/">Contact</a> </h3>
@@ -24,14 +15,52 @@ Buttercup Design Group
 
 {% endblock %}
 {% block content %}
+
 <div class="location-gallery">
+<div class="photogroup-nav">
+<a class="image-link" href="/"><div class="backbutton"></div></a>
+{% if title == "HARDSCAPES" %}
+   <a href="/landscapes">landscapes</a> <span>hardscapes</span>
+{% endif %}
+{% if title == "LANDSCAPES" %}
+   <span>landscapes</span>   <a href="/hardscapes">hardscapes</a>
 
-{% for photo in photos%}
+{% endif %}
 
-{% thumbnail photo.display "100x100" crop="center" as im %}
-    <img src="https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ im.url }}" width="{{ 270}}" height="{{ 180 }}">
-{% endthumbnail %}
+</div>
+{% for landscape in landscapes %}
 
+    <div class="hero-image-wrapper">
+    <a href="/{{prefix}}/{{landscape.slug_url}}">
+    <div class="image" style="background-image:url('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ landscape.get_hero.display }}');"><p>
+    {{landscape.name}}</p></div>
+    </a>
+    </div>
 {% endfor %}
+{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/landscapes?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a href="/landscapes?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
 </div>
 {% endblock content %}
+
+{% block script %}
+
+$('.homeblock').click(function(){
+    window.location.href = '/';
+})
+{% endblock %}
+
+
+{% block home %}
+<div class="homeblock"></div>
+{% endblock %}
+

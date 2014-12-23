@@ -24,31 +24,33 @@
 
   <body>
   <div class="main">
-  <div class="sidebar">
-  {% block sidebar %}
-  {% endblock %}
-  </div>
+
   <div class="content-wrapper">
   {% block content %}
   {% endblock content %}
+    {% block home %}
+{% endblock %}
   </div>  
   </div>
+
   </body>
     <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
-
 <script type="text/javascript" >
   $(document).ready(function() {
 
-       $('img').load(function() {
-        $(this).removeClass('loading')
-    });
+       $('img.loading').load(function() {
+        $('.loading').removeClass('loading');
+      })
+
+        $('.hero-image-wrapper.loading img').load(function(){
+          $(this).parent().parent().fadeIn('slow');
+        });
 
 
 var nextImage = function() {
 
             var shown = $(".item.active").data("order")
 
-      console.log(shown)
             $(".item.active").addClass('hide')
             $(".item.active").removeClass("active")
 
@@ -60,14 +62,14 @@ var nextImage = function() {
             } else {
               $(".item[data-order='"+ (shown + 1) +"']").addClass('active')  
             }
-
 }
-
-
 
       $(".dissolve-wrapper").click(nextImage);
         setInterval(nextImage, 4000)
  
 });
+{% block script %}
+{% endblock %}
+
 </script>
 </html>

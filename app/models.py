@@ -1,5 +1,6 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
+from django.utils.functional import cached_property
 
 
 def upload_to_s3(instance, filename):
@@ -20,6 +21,36 @@ def upload_to_media(instance, filename):
     )
 
 
+class photogroup(models.Model):
+
+        name = models.CharField(max_length=255, null=True, blank=True)
+        slug_url = AutoSlugField(populate_from=['name'],
+                         overwrite=True, null=True, blank=True)
+        detail = models.CharField(max_length=512, null=True, blank=True)
+
+        @cached_property
+        def get_hero(self):
+            r  = self.pictures.get(hero=True)
+            if r:
+                return r
+            return None
+            
+        def __str__(self):
+            return self.name
+
+class landscape(photogroup):
+        ARCHITECTURE_TYPES = (
+            ('L', 'LandScapes'),
+            ('H', 'HardScapes'),
+            )
+        architecture = models.CharField(max_length=1, choices=ARCHITECTURE_TYPES, default = 'L')
+
+class hardscape(photogroup):
+        ARCHITECTURE_TYPES = (
+            ('L', 'LandScapes'),
+            ('H', 'HardScapes'),
+            )
+        architecture = models.CharField(max_length=1, choices=ARCHITECTURE_TYPES, default = 'L')    
 
 # Create your models here.
 class location(models.Model):
@@ -32,23 +63,71 @@ class location(models.Model):
         slug_url = AutoSlugField(populate_from=['name'],
                          overwrite=True, null=True, blank=True)
         detail = models.CharField(max_length=512, null=True, blank=True)
+        @cached_property
+        def get_hero(self):
+            r  = self.pictures.get(hero=True)
+            if r:
+                return r
+            return None
+
         def __str__(self):
             return self.name
 
-
-
 class photo(models.Model):
+        slug_url = AutoSlugField(populate_from=['name', 'display'],
+                         overwrite=True, null=True, blank=True)
         name = models.CharField(max_length=255)
         display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True)
         order = models.IntegerField(null=True, blank=True)
-        location = models.ForeignKey(location, null=True, blank=True)
-        rollover = models.CharField(max_length=255, null=True, blank=True)
+        location = models.ForeignKey(location, null=True, blank=True, related_name='pictures')
         detail = models.CharField(max_length=512, null=True, blank=True)
-        SplashTypes = (
-            ('L', 'LandScapes'),
-            ('H', 'HardScapes')
-            )
-        Splash = models.CharField(max_length=1, choices=SplashTypes, null=True, blank=True)
+        hero = models.BooleanField(default=False)
+        landscape = models.ForeignKey(landscape, null=True, blank=True, related_name='pictures')
+        hardscape = models.ForeignKey(hardscape, null=True, blank=True, related_name='pictures')
+
+        @property
+        def location_slug(self):
+            if self.landscape:
+                return self.landscape.slug_url
+            elif self.hardscape:
+                return self.hardscape.slug_url
+            else: 
+                return None
+        @property
+        def next_photo_hardscape(self):
+            next = self.order
+            next = next + 1
+            return photo.objects.filter(order=next, hardscape=self.hardscape).get()
+
+        @property
+        def next_photo_landscape(self):
+            next = self.order
+            next = next + 1
+            p = photo.objects.filter(order=next, landscape=self.landscape)
+            if p:
+                return p.get()
+            else: 
+                return False 
+
+        @property
+        def prev_photo_hardscape(self):
+            next = self.order
+            next = next - 1
+            p = photo.objects.filter(order=next, hardscape=self.hardscape)
+            if p:
+                return p.get()
+            else: 
+                return False 
+
+        @property
+        def prev_photo_landscape(self):
+            next = self.order
+            next = next - 1
+            p = photo.objects.filter(order=next, landscape=self.landscape)
+            if p:
+                return p.get()
+            else: 
+                return False 
 
         class Meta:
             ordering = ["order"]

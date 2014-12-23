@@ -6,6 +6,7 @@ body{
     height: 100%;
     width: 100%;
     color:white;
+    font-family: arial;
     }
 .bottom-bg{
         background:url('../imgs/updated_bg.jpg');
@@ -80,6 +81,8 @@ h5{
 }
 .content-wrapper{
     margin: 0 auto;
+    position:relative;
+    min-height: 584px;
 }
 .quote-container{
     margin-top: 0px;
@@ -166,25 +169,16 @@ font-size: 14px;
     float:left;
     display: inline-block;
 }
-.sidebar{
-    position:absolute;
-    right: 0;
-    top: 25px;
-}
-.sidebar p{
-    margin:0px;
-cursor: auto;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 14px;
-height: auto;
-line-height: 17.5px;
-}
+
 p.location{
     text-transform:lowercase;
 }
 .location-gallery{
-    width: 842px;
-margin: 45px auto;
+    width: 90%;
+    position:relative;
+    max-width: 955px;
+margin: 0 auto;
+min-height: 620px;
 }
 .location-gallery h1{
     margin-top: 0px;
@@ -241,3 +235,179 @@ margin: 0 auto;
   text-decoration: none;
   text-shadow: 0 0 5px #444;
 }
+.hero-image-wrapper{
+  width:32%;
+  position:relative;
+  overflow:hidden;
+  height:22vw;
+  max-height:260px;
+  min-width:260px; 
+  min-height:220px;
+  display: inline-block;
+  margin-right:1%;
+  margin-bottom: 1vw;
+  color:transparent;
+
+}
+.hero-image-wrapper:hover p{
+  color:white;
+  opacity:1;
+}
+.hero-image-wrapper:nth-of-type(3n+1){
+  margin-right:0;
+}
+.hero-image-wrapper p{
+  text-transform: lowercase;
+  position:absolute;
+  width:100%;
+  box-sizing:border-box;
+  text-align: right;
+  padding-right:3px;
+  bottom:12px;
+  margin: 0 auto;
+  color:transparent;
+
+  -moz-transition: color .5s; /* Firefox 4 */
+-webkit-transition: color .5s; /* Safari and Chrome */
+-o-transition: color .5s;
+transition: color .5s;
+
+}
+.hero-image-wrapper .image{
+  background-size:cover;
+  background-repeat: no-repeat;
+  position:relative;
+width: 100%;
+display:block;
+background-position: center bottom;
+-moz-transition: opacity 2s; /* Firefox 4 */
+-webkit-transition: opacity 2s; /* Safari and Chrome */
+-o-transition: opacity 2s;
+transition: opacity 2s;
+margin:0;
+height:calc(100%);
+color:transparent;
+}
+.hero-image-wrapper .image:hover{
+  color:white;
+  opacity:.7 !important;
+  -moz-transition: opacity .5s; /* Firefox 4 */
+-webkit-transition: opacity .5s; /* Safari and Chrome */
+-o-transition: opacity .5s;
+transition: opacity .5s;
+
+}
+
+.pagination{
+position:absolute;
+bottom:-1em;
+width: 100%;
+text-align: right;
+}
+.pagination .page-links{
+float:right;
+
+}
+
+.photogroup-nav{
+  height:3em;
+  font-size: 18px;
+  padding:12px;
+  line-height:3em;
+  text-transform: lowercase;
+  letter-spacing: initial;
+
+}
+.photogroup-nav a {
+   letter-spacing: initial;
+}
+.photogroup-nav a, .photogroup-nav span{
+  margin-right:18px;
+}
+.single{
+display: block;
+position:relative;
+width: 100%;
+max-width: 955px;
+margin: 0 auto;
+height: 580px;
+overflow: hidden;
+background-size:cover;
+background-repeat: no-repeat;
+background-position: center bottom;
+}
+.single img{
+  width: 100%;
+}
+
+.image-link{
+  font-family: arial;
+  text-transform: uppercase;
+  border-bottom: 0px white solid !important;
+}
+.image-link.single-page{
+  position:absolute;
+
+}
+.backbutton{
+  background-image: url('../imgs/noun_15364.png');
+  opacity:.5;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  background-size: cover;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  margin-bottom:-6px;
+}
+.backbutton:hover{
+  opacity:.7;
+    transform:scale(.95);
+}
+.backbutton:active{
+  opacity:1;
+  transform:scale(.90);
+}
+.homeblock{
+position: absolute;
+height: 150px;
+width: 301px;
+bottom: -150px;
+opacity: .5;
+left: calc(50% - 498px);
+cursor:pointer;
+}
+
+.next-photo, .prev-photo{
+  background-image:url('../imgs/nav_arrow.png');
+    -webkit-filter: invert(100%);
+  filter: invert(100%);
+  background-size:cover;
+  background-repeat: no-repeat;
+  position:absolute; 
+  top:50%;
+  right:2em;
+  width: 60px;
+  height:60px;
+  opacity:.5;
+  cursor:pointer;
+}
+.next-photo:hover, .prev-photo:hover{
+  opacity:.7;
+}
+.next-photo:active, .prev-photo:active{
+ height:59px;
+ width:59px;
+}
+.prev-photo{
+left:2em;
+z-index:1;
+-webkit-backface-visibility:hidden;
+       -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
+

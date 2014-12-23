@@ -2,7 +2,7 @@ from django.shortcuts import render,  get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.views.generic import ListView, DetailView
-from app.models import location, photo, media
+from app.models import location, photo, media, landscape, hardscape
 
 
 
@@ -22,47 +22,29 @@ def about(request):
 
 
 
-def gallery(request):
-    template = loader.get_template('gallery.html')
-    context = RequestContext(request, {})
-    return HttpResponse(template.render(context))
-
-class LookHereView(ListView):
-    template_name = 'gallery.html'
-    model=location
-
-    def get_context_data(self, **kwargs):
-        context = super(LookHereView, self).get_context_data(**kwargs)
-        context['landscapes'] =  location.objects.filter(architecture="L")
-        context['hardscapes'] = location.objects.filter(architecture="H")
-        return context
-
 class LandScapeView(ListView):
     template_name = 'location.html'
-    model = location
+    model = landscape
+    paginate_by = 6
+    context_object_name = "landscapes"
 
     def get_context_data(self, **kwargs):
         context = super(LandScapeView, self).get_context_data(**kwargs)
-        context['landscapes'] =  location.objects.filter(architecture="L")
-        context['hardscapes'] = location.objects.filter(architecture="H")
-        photos = photo.objects.filter(Splash="L").order_by('order')
-        context['photos'] = photos
         context['title'] = 'LANDSCAPES'
+        context["prefix"] = 'landscape'
         return context
 
 class HardScapeView(ListView):
     template_name = 'location.html'
-    model = location
+    model = hardscape
+    paginate_by = 6
+    context_object_name = "landscapes"
 
     def get_context_data(self, **kwargs):
         context = super(HardScapeView, self).get_context_data(**kwargs)
-        context['landscapes'] =  location.objects.filter(architecture="L")
-        context['hardscapes'] = location.objects.filter(architecture="H")
-        photos = photo.objects.filter(Splash="H").order_by('order')
-        context['photos'] = photos
         context['title'] = 'HARDSCAPES'
+        context["prefix"] = 'hardscape'
         return context
-
 
 class MediaView(ListView):
     template_name = 'media.html'
@@ -75,32 +57,81 @@ class MediaView(ListView):
         context['media'] = media.objects.all().order_by('order')
         return context
 
-
-class LocationView(DetailView):
-    template_name = 'location.html'
-    model = location
+class landscapeDetailView(ListView):
+    template_name = 'gallery.html'
+    model = photo
     slug_field = 'slug_url'
     slug_url_kwarg = 'name'
+    paginate_by = 6
+    context_object_name = 'photos'
+
+    def get_queryset(self):
+        queryset = super(landscapeDetailView, self).get_queryset()
+        queryset = queryset.filter(landscape__slug_url=self.kwargs['name'])
+        return queryset
 
     def get_context_data(self, **kwargs):
-        context = super(LocationView, self).get_context_data(**kwargs)
-        self.location = get_object_or_404(location, slug_url=self.kwargs['name'])
-        context['photos'] = photo.objects.filter(location=self.location)
-        context['landscapes'] =  location.objects.filter(architecture="L")
-        context['hardscapes'] = location.objects.filter(architecture="H")
+        context = super(landscapeDetailView, self).get_context_data(**kwargs)
+        self.location = get_object_or_404(landscape, slug_url=self.kwargs['name'])
         context['location'] = self.location
         context['title'] = self.location.name
+        context['prefix'] = "landscape"
         return context
 
-class PhotoView(DetailView):
+class hardscapeDetailView(ListView):
+    template_name = 'gallery.html'
+    model = photo
+    slug_field = 'slug_url'
+    slug_url_kwarg = 'name'
+    paginate_by = 6
+    context_object_name = 'photos'
+
+    def get_queryset(self):
+        queryset = super(hardscapeDetailView, self).get_queryset()
+        queryset = queryset.filter(hardscape__slug_url=self.kwargs['name'])
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(hardscapeDetailView, self).get_context_data(**kwargs)
+        self.location = get_object_or_404(hardscape, slug_url=self.kwargs['name'])
+        context['location'] = self.location
+        context['title'] = self.location.name
+        context['prefix'] = "hardscape"
+        return context
+
+class hardscapePhotoView(DetailView):
     template_name= 'photo.html'
     model = photo
     slug_field = "slug_url"
-    slug_url_kwarg = "photo_name"
+    slug_url_kwarg = "photo_number"
+    context_object_name = "photo"
 
     def get_context_data(self, **kwargs):
-        context = super(PhotoView, self).get_context_data(*kwargs)
-        self.photo = get_object_or_404(photo, order=self.kwargs['photo_number'])
+        context = super(hardscapePhotoView, self).get_context_data(**kwargs)
+        self.photo = get_object_or_404(photo, slug_url=self.kwargs['photo_number'])
+        context['next'] = self.photo.next_photo_hardscape
+        context['prev'] = self.photo.prev_photo_hardscape
+        context['prefix'] = "hardscape"
+        context["company"] = self.photo.hardscape
+
+        return context
+
+class landscapePhotoView(DetailView):
+    template_name= 'photo.html'
+    model = photo
+    slug_field = "slug_url"
+    slug_url_kwarg = "photo_number"
+    context_object_name = "photo"
+
+
+    def get_context_data(self, **kwargs):
+        context = super(landscapePhotoView, self).get_context_data(**kwargs)
+        self.photo = get_object_or_404(photo, slug_url=self.kwargs['photo_number'])
+        context['prefix'] = "landscape"
+        context['next'] = self.photo.next_photo_landscape
+        context['prev'] = self.photo.prev_photo_landscape
+        context["company"] = self.photo.landscape
+
         return context
 
 
