@@ -97,7 +97,11 @@ class photo(models.Model):
         def next_photo_hardscape(self):
             next = self.order
             next = next + 1
-            return photo.objects.filter(order=next, hardscape=self.hardscape).get()
+            p =  photo.objects.filter(order=next, hardscape=self.hardscape)
+            if p:
+                return p.get()
+            else: 
+                return False 
 
         @property
         def next_photo_landscape(self):
