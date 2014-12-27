@@ -143,6 +143,7 @@ class media(models.Model):
         cover_image = models.ImageField(upload_to=upload_to_media, blank=True,null=True)
         order = models.IntegerField(null=True, blank=True)
         full_pdf = models.FileField(upload_to=upload_to_media, blank=True,null=True)
+        website = models.CharField(max_length=255, null=True, blank=True)
 
         class Meta: 
             ordering = ["order"]

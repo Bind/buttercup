@@ -198,6 +198,9 @@ width: 792px;
 
 margin: 2em auto;
 }
+.magazine-cover{
+  cursor:pointer;
+}
 .magazine-gallery img{
     margin-right:2em;
     margin-bottom:2em;

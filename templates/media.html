@@ -35,6 +35,11 @@ https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ magazine.cover_image 
                 $('.magazine-cover[data-order="{{magazine.order}}"]').click(function(){
                     window.open("https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{magazine.full_pdf}}", '_blank');
                 })
+            {% else %}{% if magazine.website %}
+                            $('.magazine-cover[data-order="{{magazine.order}}"]').click(function(){
+                    window.open("{{magazine.website}}", '_blank');
+                })
+            {% endif %}
             {% endif %}
         {% endfor %}
 
