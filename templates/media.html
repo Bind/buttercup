@@ -11,8 +11,8 @@ Buttercup Design Group
 
 
 {% block content %}
-
 <div class="magazine-gallery">
+<a class="image-link media-page"><div class="backbutton"></div></a>
 {% for magazine in media %}
 <img class="magazine-cover" src="  
 https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ magazine.display }}"> 
@@ -21,4 +21,11 @@ https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ magazine.display }}">
 </div>
 
 
-{% endblock content %}
+{% endblock  %}
+
+{% block script %}
+
+    $('.backbutton').click(function(){
+        window.location.href = "/";
+
+{% endblock %}

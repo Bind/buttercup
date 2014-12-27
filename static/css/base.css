@@ -345,6 +345,11 @@ background-position: center bottom;
   text-transform: uppercase;
   border-bottom: 0px white solid !important;
 }
+
+.image-link.media-page{
+
+  margin-top:1em;
+}
 .image-link.single-page{
   position:absolute;
 
