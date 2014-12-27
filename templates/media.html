@@ -14,8 +14,8 @@ Buttercup Design Group
 <div class="magazine-gallery">
 <a class="image-link media-page"><div class="backbutton"></div></a>
 {% for magazine in media %}
-<img class="magazine-cover" src="  
-https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ magazine.display }}"> 
+<img class="magazine-cover" data-order="{{magazine.order}}"src="  
+https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ magazine.cover_image }}"> 
 
 {% endfor %}
 </div>
@@ -28,5 +28,16 @@ https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ magazine.display }}">
     $('.backbutton').click(function(){
         window.location.href = "http://buttercupdesigngroup.com/";
         })
+
+
+        {% for magazine in media %}
+            {% if magazine.full_pdf %}
+                $('.magazine-cover[data-order="{{magazine.order}}"]').click(function(){
+                    window.open("https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{magazine.full_pdf}}", '_blank');
+                })
+            {% endif %}
+        {% endfor %}
+
+
 
 {% endblock %}
