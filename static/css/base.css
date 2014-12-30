@@ -421,3 +421,12 @@ z-index:1;
         -ms-filter: "FlipH";
 }
 
+.apld-container{
+  background-image: url('../imgs/apld.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display:inline-block;
+float: right;
+  height:100px;
+  width: 100px;
+}
