@@ -7,10 +7,12 @@ def upload_to_s3(instance, filename):
     import os
     from django.utils.timezone import now
     filename_base, filename_ext = os.path.splitext(filename)
-    return 'photos/%s%s%s' % (instance.name,
+    return 'photos/%s%s%s%s' % (instance.gallery_name, 
+        instance.name,
         filename_base,
         filename_ext.lower(),
     )
+
 def upload_to_media(instance, filename):
     import os
     from django.utils.timezone import now
@@ -94,6 +96,16 @@ class photo(models.Model):
                 return self.hardscape.slug_url
             else: 
                 return None
+        @property
+        def gallery_name(self):
+            if self.landscape:
+                return self.landscape.name
+            elif self.hardscape:
+                return self.hardscape.name
+            else: 
+                return None
+        
+
         @property
         def next_photo_hardscape(self):
             next = self.order
