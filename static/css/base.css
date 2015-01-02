@@ -261,6 +261,7 @@ margin: 2em auto;
   margin-right:0;
 }
 .hero-image-wrapper p{
+  font-size:14px;
   text-transform: lowercase;
   position:absolute;
   width:100%;
