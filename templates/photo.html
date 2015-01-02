@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title%}
+Buttercup Design Group
+{% endblock title %}
+
+
+{% block content %}
+<div class="location-gallery">
+<div class="photogroup-nav">
+
+<a class="image-link single-page"><div class="backbutton"></div></a>
+</div>
+    <div class="single" style="background-image:url('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}')" >
+
+    {% if prev %}
+    <div class="prev-photo"> </div>
+    {% endif %}
+
+    {% if next %}
+    <div class="next-photo"> </div>
+    {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+$('.homeblock').click(function(){
+    window.location.href = '/';
+})
+    $('.backbutton').click(function(){
+        window.location.href = "/{{prefix}}/{{company.slug_url}}";
+    })
+    $('.next-photo').click(function(){
+        window.location.href = '/{{prefix}}/{{company.slug_url}}/{{next.slug_url}}/'
+    })
+    $('.prev-photo').click(function(){
+        window.location.href = '/{{prefix}}/{{company.slug_url}}/{{prev.slug_url}}/'
+    })
+
+{% endblock %}
+
+
+{% block home %}
+<div class="homeblock"></div>
+{% endblock %}
