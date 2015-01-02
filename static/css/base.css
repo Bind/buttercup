@@ -250,6 +250,7 @@ margin: 2em auto;
   margin-right:1%;
   margin-bottom: 1vw;
   color:transparent;
+  letter-spacing:initial;
 
 }
 .hero-image-wrapper:hover p{
@@ -269,6 +270,7 @@ margin: 2em auto;
   bottom:12px;
   margin: 0 auto;
   color:transparent;
+  letter-spacing:initial;
 
   -moz-transition: color .5s; /* Firefox 4 */
 -webkit-transition: color .5s; /* Safari and Chrome */
@@ -314,7 +316,7 @@ float:right;
 
 .photogroup-nav{
   height:3em;
-  font-size: 18px;
+  font-size: 14px;
   padding:12px;
   line-height:3em;
   text-transform: lowercase;
