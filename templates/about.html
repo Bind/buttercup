@@ -7,6 +7,7 @@ Buttercup Design Group
 {% block content %}
 <div class="about"> 
 <div class="we-are-container">
+<a class="image-link we-are-page"><div class="backbutton"></div></a>
 <h5>we are...</h5>
 <p>serving the East End of Long Island, NYC and Connecticut for 15 years.
 </p>
@@ -32,3 +33,9 @@ With an eye toward the future growth of the site, we strive for creative solutio
 
 
 {% endblock content %}
+
+{% block script %}
+    $('.backbutton').click(function(){
+        window.location.href = "http://buttercupdesigngroup.com/";
+        })
+{% endblock %}

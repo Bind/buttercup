@@ -358,6 +358,11 @@ background-position: center bottom;
   position:absolute;
   top: -1.75em;
 }
+.image-link.we-are-page{
+    margin-top:1em;
+  position:absolute;
+  top: 1.75em;
+}
 .image-link.single-page{
   position:absolute;
 
