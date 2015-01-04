@@ -148,12 +148,30 @@ a:hover{
     width:796px;
     padding-top:6em;
 }
+.contact{
+    margin: 0 auto;
+    width:924px;
+    padding-top:6em;
+}
 
 .we-are-container{
     width: 470px;
 display:inline-block;
 float:left;
 margin-right:4em;
+}
+.contact-us-container{
+    width: 100%;
+display:inline-block;
+float:left;
+
+text-align: middle;
+}
+.contact-us-container h5{
+
+    font-weight: 400;
+    font-size: 28px;
+    font-family: "Courier New", Courier, Arial;
 }
 .we-are-container p{
 font-size: 14px;
@@ -438,3 +456,17 @@ float: right;
   height:100px;
   width: 100px;
 }
+.contact-container{
+  position:relative;
+  margin: 55px auto;
+  width: 330px;
+}
+.contact-container .image-link{
+  position:absolute;
+  top:.25em;
+  left:-3em;
+}
+.contact-name{
+  text-decoration: underline;
+}
+

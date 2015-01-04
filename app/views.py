@@ -20,7 +20,10 @@ def about(request):
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
 
-
+def contact(request):
+    template = loader.get_template('contact.html')
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
 
 class LandScapeView(ListView):
     template_name = 'location.html'

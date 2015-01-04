@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title%}
+Buttercup Design Group
+{% endblock title %}
+
+{% block content %}
+<div class="contact">
+<div class="contact-us-container">
+
+<div class="contact-container">
+<a class="image-link"><div class="backbutton"></div></a>
+<h5>connect</h5>
+<p class="contact-name">Vickie Cardaro - Designer and Principal</p>
+<p>PO Box 43, Shelter Island Heights, NY  11965</p>
+<p>vickie@buttercupdesigngroup.com</p>
+<p>631 749 0101</p>
+<br/>
+<p class="contact-name">Michelle Card - Office Administrative Assistant </p><p>michelle@buttercupdesigngroup.com</p>
+<br/>
+
+<p class="contact-name">Chris Aivazian - Director Of Operations </p><p>
+chris@buttercupdesigngroup.com</p>
+</div><br/>
+</div>
+</div>
+{% endblock %}
+
+
+
+
+{% block script %}
+    $('.backbutton').click(function(){
+        window.location.href = "http://buttercupdesigngroup.com/";
+        })
+{% endblock %}
