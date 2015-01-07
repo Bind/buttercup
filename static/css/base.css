@@ -458,7 +458,7 @@ float: right;
 }
 .contact-container{
   position:relative;
-  margin: 55px auto;
+  margin: -50px auto;
   width: 330px;
 }
 .contact-container .image-link{
