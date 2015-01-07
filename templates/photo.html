@@ -53,7 +53,13 @@ $('.homeblock').click(function(){
         var related_height = this.height/this.width * 955
 
         if (related_height < 500){
+        var margin = related_height-130;
+        margin = margin + "px";
+        $('.main').animate({"margin-top":margin}, 300, function(){
          $('.single').animate({ opacity:"1"}, 300);
+         $('.single').css('height', (related_height+"px"))
+        $('.single').show()
+        })
         }
         else{
         var margin = height - 584;
