@@ -7,7 +7,7 @@ def upload_to_s3(instance, filename):
     import os
     from django.utils.timezone import now
     filename_base, filename_ext = os.path.splitext(filename)
-    return 'photos/%s%s%s%s' % (instance.gallery_name.replace (" ", "_"), 
+    return 'photos/%s%s%s%s' % (instance.gallery_name.replace (" ", "-"), 
         instance.name,
         filename_base,
         filename_ext.lower(),
