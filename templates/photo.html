@@ -43,19 +43,37 @@ $('.homeblock').click(function(){
     })
     $(".content-wrapper").css('position', 'inherit')
 
+    var img = new Image()
+
+    img.onload = function(){
 
     var window_height = $(window).height()
     var height = window_height - 150;
      if (window_height > 800){
+        var related_height = this.height/this.width * 955
+
+        if (related_height < 500){
+         $('.single').animate({ opacity:"1"}, 300);
+        }
+        else{
         var margin = height - 584;
-        margin = margin + "px"
+        margin = margin + "px";
         $('.main').animate({"margin-top":margin}, 300, function(){
          $('.single').animate({ opacity:"1"}, 300);
          $('.single').css('height', (height+"px"))
+        $('.single').show()
         })
+        }
+
      } else{
-        $('.single').show();
+        $('.single').animate({ opacity:"1"}, 300);
      }
+
+
+    }
+    img.src = 'https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}'
+
+
      
     
     
