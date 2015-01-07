@@ -358,8 +358,7 @@ float:right;
   margin-right:18px;
 }
 .single{
-
-display: none;
+opacity: 0;
 position:relative;
 width: 100%;
 max-width: 955px;

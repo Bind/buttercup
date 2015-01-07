@@ -50,7 +50,7 @@ $('.homeblock').click(function(){
         var margin = height - 584;
         margin = margin + "px"
         $('.main').animate({"margin-top":margin}, 300, function(){
-         $('.single').show();
+         $('.single').animate({ opacity:"1"}, 300);
          $('.single').css('height', (height+"px"))
         })
      } else{
