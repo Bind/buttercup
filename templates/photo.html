@@ -42,6 +42,19 @@ $('.homeblock').click(function(){
         window.location.href = '/{{prefix}}/{{company.slug_url}}/{{prev.slug_url}}/'
     })
 
+    var img = new Image();
+    img.onload = function(){
+    var height = this.height/this.width * 955
+
+     if (height > 644){
+        height = height - 644;
+        height = height + "px"
+        $('main').animate({"margin-top":height}, 300, function(){})
+     }
+        $('single').show(300);
+
+    }
+
 {% endblock %}
 
 

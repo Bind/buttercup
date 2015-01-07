@@ -349,7 +349,8 @@ float:right;
   margin-right:18px;
 }
 .single{
-display: block;
+
+display: hidden;
 position:relative;
 width: 100%;
 max-width: 955px;
