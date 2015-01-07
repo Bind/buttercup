@@ -49,19 +49,7 @@ $('.homeblock').click(function(){
 
     var window_height = $(window).height()
     var height = window_height - 150;
-     if (window_height > 800){
-        var related_height = this.height/this.width * 955
-
-        if (related_height < 500){
-        var margin = related_height-130;
-        margin = margin + "px";
-        $('.main').animate({"margin-top":margin}, 300, function(){
-         $('.single').animate({ opacity:"1"}, 300);
-         $('.single').css('height', (related_height+"px"))
-        $('.single').show()
-        })
-        }
-        else{
+     if (window_height > 800 & this.height > this.width){
         var margin = height - 584;
         margin = margin + "px";
         $('.main').animate({"margin-top":margin}, 300, function(){
@@ -69,7 +57,6 @@ $('.homeblock').click(function(){
          $('.single').css('height', (height+"px"))
         $('.single').show()
         })
-        }
 
      } else{
         $('.single').animate({ opacity:"1"}, 300);
