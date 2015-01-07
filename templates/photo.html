@@ -7,7 +7,7 @@ Buttercup Design Group
 
 
 {% block content %}
-<div class="location-gallery">
+<div class="single-gallery">
 <div class="photogroup-nav">
 
 <a class="image-link single-page"><div class="backbutton"></div></a>
@@ -41,19 +41,24 @@ $('.homeblock').click(function(){
     $('.prev-photo').click(function(){
         window.location.href = '/{{prefix}}/{{company.slug_url}}/{{prev.slug_url}}/'
     })
+    $(".content-wrapper").css('position', 'inherit')
 
-    var img = new Image();
-    img.onload = function(){
-    var height = this.height/this.width * 955
 
-     if (height > 644){
-        height = height - 644;
-        height = height + "px"
-        $('main').animate({"margin-top":height}, 300, function(){})
+    var window_height = $(window).height()
+    var height = window_height - 150;
+     if (window_height > 400){
+        var margin = height - 584;
+        margin = margin + "px"
+        $('.main').animate({"margin-top":margin}, 300, function(){
+         $('.single').show();
+         $('.single').css('height', (height+"px"))
+        })
+     } else{
+        $('.single').show();
      }
-        $('single').show(300);
-
-    }
+     
+    
+    
 
 {% endblock %}
 

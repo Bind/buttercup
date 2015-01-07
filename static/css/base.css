@@ -198,6 +198,15 @@ p.location{
 margin: 0 auto;
 min-height: 620px;
 }
+.single-gallery{
+  position:absolute;
+  top:0px;
+      max-width: 955px;
+      margin: 0 auto;
+    min-height: 620px;
+    left:0px;
+    right:0px;
+}
 .location-gallery h1{
     margin-top: 0px;
 }
@@ -350,7 +359,7 @@ float:right;
 }
 .single{
 
-display: hidden;
+display: none;
 position:relative;
 width: 100%;
 max-width: 955px;
