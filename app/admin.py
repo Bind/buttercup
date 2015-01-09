@@ -16,7 +16,8 @@ class LocationAdmin(admin.ModelAdmin):
 
 class LandscapeAdmin(admin.ModelAdmin):
         inlines = [PhotoInline]
-        list_display = ('name',)
+        list_display = ('name','order')
+        list_editable = ('order',)
 
 class HardscapeAdmin(admin.ModelAdmin):
         list_display = ('name',)

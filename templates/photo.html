@@ -7,13 +7,20 @@ Buttercup Design Group
 
 
 {% block content %}
+<style>
+body{position:relative;}
+    .main{
+
+    }
+    .content-wrapper{
+        position:absolute;
+        width:100%;
+        left:;
+    }
+</style>
 <div class="single-gallery">
-<div class="photogroup-nav">
-
-<a class="image-link single-page"><div class="backbutton"></div></a>
-</div>
     <div class="single" style="background-image:url('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}')" >
-
+<a class="image-link single-page"><div class="backbutton"></div></a>
     {% if prev %}
     <div class="prev-photo"> </div>
     {% endif %}
@@ -28,12 +35,28 @@ Buttercup Design Group
 {% endblock %}
 
 {% block script %}
+    var window_height = $(window).height()
+    var height = window_height - 150;
+(function(){
+    var window_height = $(window).height()
+    var height = window_height - 150;
+     if (window_height > 400 & {{photo.height}} > {{photo.width}}){
+        var margin = height - 584;
+        margin = margin + "px";
+        $('.main').css("margin-top", margin)
+        $('.main').css("margin-left",("calc(50% - " + ( ({{photo.width}} / {{photo.height}} * height) / 2) + "px)"))
+        console.log(("calc(25% +" + ( ({{photo.width}} / {{photo.height}} * height) / 2) + "px)"))
+        //$('.content-wrapper').css("left","calc(50% - "+parseInt((640-{{photo.width}}/{{photo.height}}*height/2)) + "px)")
+        }
+        else{ 
+        $('.single').css("margin-top","40px")
+        $('.single').css("background-size", "cover")}})()
 
 $('.homeblock').click(function(){
     window.location.href = '/';
 })
     $('.backbutton').click(function(){
-        window.location.href = "/{{prefix}}/{{company.slug_url}}";
+        window.location.href = "/{{prefix}}s/?page={{photo.location_page_number}}";
     })
     $('.next-photo').click(function(){
         window.location.href = '/{{prefix}}/{{company.slug_url}}/{{next.slug_url}}/'
@@ -46,23 +69,14 @@ $('.homeblock').click(function(){
     var img = new Image()
 
     img.onload = function(){
+       $('.single').animate({ opacity:"1"}, 300);
 
-    var window_height = $(window).height()
-    var height = window_height - 150;
-     if (window_height > 800 & this.height > this.width){
-        var margin = height - 584;
-        margin = margin + "px";
-        $('.main').animate({"margin-top":margin}, 300, function(){
-         $('.single').animate({ opacity:"1"}, 300);
-         $('.single').css('height', (height+"px"))
+        if (window_height > 400 & {{photo.height}} > {{photo.width}}){
+         $('.single').css('height', (height +"px"))
+         var left = {{photo.width}}/{{photo.height}} * height/2
+         }
+
         $('.single').show()
-        })
-
-     } else{
-        $('.single').animate({ opacity:"1"}, 300);
-     }
-
-
     }
     img.src = 'https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}'
 

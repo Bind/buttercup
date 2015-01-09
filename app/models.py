@@ -1,7 +1,7 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
 from django.utils.functional import cached_property
-
+from sys import *
 
 def upload_to_s3(instance, filename):
     import os
@@ -30,6 +30,8 @@ class photogroup(models.Model):
         slug_url = AutoSlugField(populate_from=['name'],
                          overwrite=True, null=True, blank=True)
         detail = models.CharField(max_length=512, null=True, blank=True)
+        order = models.PositiveIntegerField( max_length=4, default=1)
+
 
         @cached_property
         def get_hero(self):
@@ -38,6 +40,11 @@ class photogroup(models.Model):
                 return r
             return None
             
+
+
+        class Meta:
+            ordering = ['order']
+
         def __str__(self):
             return self.name
 
@@ -66,6 +73,7 @@ class location(models.Model):
         slug_url = AutoSlugField(populate_from=['name'],
                          overwrite=True, null=True, blank=True)
         detail = models.CharField(max_length=512, null=True, blank=True)
+
         @cached_property
         def get_hero(self):
             r  = self.pictures.get(hero=True)
@@ -80,13 +88,15 @@ class photo(models.Model):
         slug_url = AutoSlugField(populate_from=['name', 'display'],
                          overwrite=True, null=True, blank=True)
         name = models.CharField(max_length=255)
-        display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True)
+        display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True, height_field="height", width_field="width")
         order = models.IntegerField(null=True, blank=True)
         location = models.ForeignKey(location, null=True, blank=True, related_name='pictures')
         detail = models.CharField(max_length=512, null=True, blank=True)
         hero = models.BooleanField(default=False)
         landscape = models.ForeignKey(landscape, null=True, blank=True, related_name='pictures')
         hardscape = models.ForeignKey(hardscape, null=True, blank=True, related_name='pictures')
+        height = models.PositiveIntegerField()
+        width = models.PositiveIntegerField()
 
         @property
         def location_slug(self):
@@ -104,7 +114,18 @@ class photo(models.Model):
                 return self.hardscape.name
             else: 
                 return None
-        
+    
+        @cached_property 
+        def location_page_number(self):
+            if self.landscape:
+               return 1 + int((self.landscape.order+1)/6) 
+                                
+            
+            elif self.hardscape:
+                return 1 + int((self.hardscape.order+1)/6) 
+
+            else: 
+                return None
 
         @property
         def next_photo_hardscape(self):
