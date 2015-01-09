@@ -35,9 +35,6 @@ class LandScapeView(ListView):
         context = super(LandScapeView, self).get_context_data(**kwargs)
         context['title'] = 'LANDSCAPES'
         context["prefix"] = 'landscape'
-        for scape in context['landscapes']:
-            scape.page = context['page_obj'].number
-            scape.save()
         return context
 
 class HardScapeView(ListView):
