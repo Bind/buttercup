@@ -118,11 +118,11 @@ class photo(models.Model):
         @cached_property 
         def location_page_number(self):
             if self.landscape:
-               return 1 + int((self.landscape.order+1)/6) 
+               return 1 + int((self.landscape.order)/6) 
                                 
             
             elif self.hardscape:
-                return 1 + int((self.hardscape.order+1)/6) 
+                return 1 + int((self.hardscape.order)/6) 
 
             else: 
                 return None
