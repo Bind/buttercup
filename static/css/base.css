@@ -24,6 +24,23 @@ p, h1, h2, h3, h4, h5{
 .row:nth-of-type(2){
     text-align: center;
 }
+.row.contact-nav-bar{
+  position:absolute;
+  bottom: -10.5em;
+  left:50%;  
+  top:640px;
+  text-align: right;
+}
+.row.location-nav-bar{
+  position:absolute;
+  top:640px;
+  left:50%;
+}
+.row.we-are-nav-bar{
+  position:absolute;
+  top:640px;
+  left:50%;
+}
 .banner{
     height:80px;
 
@@ -433,7 +450,7 @@ cursor:pointer;
   background-repeat: no-repeat;
   position:absolute; 
   top:50%;
-  right:2em;
+  right:-4em;
   width: 60px;
   height:60px;
   opacity:.5;
@@ -447,7 +464,7 @@ cursor:pointer;
  width:59px;
 }
 .prev-photo{
-left:2em;
+left:-4em;
 z-index:1;
 -webkit-backface-visibility:hidden;
        -moz-transform: scaleX(-1);

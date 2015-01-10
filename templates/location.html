@@ -5,16 +5,13 @@
 Buttercup Design Group
 {% endblock title %}
 
-{% block sidebar %}
-<h3><a href="/">HOME</a> </h5>
-<h3><a href="/about">We Are</a> </h3>
-<h3><a href="/media">Media</a> </h3>
-<h3><a href="/">Contact</a> </h3>
 
-
-
-{% endblock %}
 {% block content %}
+<style>
+    .content-wrapper{
+        position:inherit;
+    }
+</style>
 
 <div class="location-gallery">
 <div class="photogroup-nav">
@@ -38,19 +35,9 @@ Buttercup Design Group
     </a>
     </div>
 {% endfor %}
-{% if is_paginated %}
-        <div class="pagination">
-            <span class="page-links">
-                {% if page_obj.has_previous %}
-                    <a href="/landscapes?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-                {% if page_obj.has_next %}
-                    <a href="/landscapes?page={{ page_obj.next_page_number }}">next</a>
-                {% endif %}
-            </span>
-        </div>
-    {% endif %}
+
 </div>
+{% include "includes/navbar.html" with lookhere=True secondary_class="location-nav-bar"%}
 {% endblock content %}
 
 {% block script %}
