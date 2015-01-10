@@ -1,0 +1,26 @@
+
+<div class="row {{secondary_class}}">
+    <div class="link-container">
+    <div class="apld-container"></div>
+        
+        {% if not lookhere %}<a class="front-link" href="/landscapes/">LOOK HERE</a>{% endif %}
+        
+        {% if not we_are %}<a class="front-link" href="/about">WE ARE</a>{% endif %}
+        
+        {% if not media%}<a class="front-link" href="/media">MEDIA</a>{% endif %}
+        
+        {% if not contact%}<a class="front-link" href="/contact/">CONTACT</a> {% endif %}
+   
+
+{% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    <a class="front-link" href="/landscapes?page={{ page_obj.previous_page_number }}">PREVIOUS</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="front-link" href="/landscapes?page={{ page_obj.next_page_number }}">MORE</a>
+                {% endif %}
+    {% endif %}
+     <a class="front-link" href=""></a>
+    </div>
+
+</div>
