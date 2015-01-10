@@ -3,11 +3,12 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.views.generic import ListView, DetailView
 from app.models import location, photo, media, landscape, hardscape
-
+from django.views.decorators.cache import cache_control
 
 
 # Create your views here.
 
+@cache_control(public=True, max_age=300)
 def index(request):
     template = loader.get_template('index.html')
     context = RequestContext(request, {
@@ -15,11 +16,13 @@ def index(request):
         })
     return HttpResponse(template.render(context))
 
+@cache_control(public=True, max_age=300)
 def about(request):
     template = loader.get_template('about.html')
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
 
+@cache_control(public=True, max_age=300)
 def contact(request):
     template = loader.get_template('contact.html')
     context = RequestContext(request, {})
@@ -116,7 +119,6 @@ class hardscapePhotoView(DetailView):
         context['prev'] = self.photo.prev_photo_hardscape
         context['prefix'] = "hardscape"
         context["company"] = self.photo.hardscape
-
         return context
 
 class landscapePhotoView(DetailView):
