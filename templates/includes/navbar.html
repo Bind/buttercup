@@ -11,7 +11,7 @@
         
         {% if not contact%}<a class="front-link" href="/contact/">CONTACT</a> {% endif %}
    
-
+{% if not media %}
 {% if is_paginated %}
                 {% if page_obj.has_previous %}
                     <a class="front-link" href="/landscapes?page={{ page_obj.previous_page_number }}">PREVIOUS</a>
@@ -20,6 +20,17 @@
                     <a class="front-link" href="/landscapes?page={{ page_obj.next_page_number }}">MORE</a>
                 {% endif %}
     {% endif %}
+{% else %}
+    {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    <a class="front-link" href="/media/page={{ page_obj.previous_page_number }}">PREVIOUS</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="front-link" href="/media?page={{ page_obj.next_page_number }}">MORE</a>
+                {% endif %}
+    {% endif %}
+{% endif %}
+
      <a class="front-link" href=""></a>
     </div>
 

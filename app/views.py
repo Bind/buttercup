@@ -54,13 +54,9 @@ class HardScapeView(ListView):
 class MediaView(ListView):
     template_name = 'media.html'
     model = media
+    paginate_by = 6
+    context_object_name = "media"
 
-    def get_context_data(self, **kwargs):
-        context = super(MediaView, self).get_context_data(**kwargs)
-        context['landscapes'] =  location.objects.filter(architecture="L")
-        context['hardscapes'] = location.objects.filter(architecture="H")
-        context['media'] = media.objects.all().order_by('order')
-        return context
 
 class landscapeDetailView(ListView):
     template_name = 'gallery.html'
