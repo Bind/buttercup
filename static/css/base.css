@@ -138,6 +138,11 @@ img.bottom{
     margin-top: 1em;
 }
 
+.location-gallery .front-link{
+  float:right;
+  margin-right: 1em;
+  font-size: 11px;
+}
 .front-link{
 font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
@@ -243,6 +248,12 @@ width: 792px;
     padding-top:1.5em;
 
 margin: 2em auto;
+min-height: 676px;
+}
+.magazine-gallery .row{
+  position:absolute;
+  width:792px;
+  bottom:-5em;
 }
 .magazine-cover{
   cursor:pointer;

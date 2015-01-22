@@ -35,7 +35,14 @@ Buttercup Design Group
     </a>
     </div>
 {% endfor %}
-
+{% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    <a class="front-link" href="/landscapes?page={{ page_obj.previous_page_number }}">PREVIOUS</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="front-link" href="/landscapes?page={{ page_obj.next_page_number }}">MORE</a>
+                {% endif %}
+    {% endif %}
 </div>
 {% include "includes/navbar.html" with lookhere=True secondary_class="location-nav-bar"%}
 {% endblock content %}

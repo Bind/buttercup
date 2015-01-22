@@ -21,19 +21,12 @@ Buttercup Design Group
 {% endfor %}
 
 {% if is_paginated %}
-        <div class="pagination">
-            <span class="page-links">
                 {% if page_obj.has_previous %}
-                    <a href="/{{prefix}}/{{location.slug_url}}?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-                {% if page_obj.has_previous and page_obj.has_next%}
-                <span>|</span> 
+                    <a class="front-link" href="/landscapes?page={{ page_obj.previous_page_number }}">PREVIOUS</a>
                 {% endif %}
                 {% if page_obj.has_next %}
-                    <a href="/{{prefix}}/{{location.slug_url}}?page={{ page_obj.next_page_number }}">next</a>
+                    <a class="front-link" href="/landscapes?page={{ page_obj.next_page_number }}">MORE</a>
                 {% endif %}
-            </span>
-        </div>
     {% endif %}
 </div>
 {% endblock content %}
