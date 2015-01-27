@@ -78,11 +78,20 @@ $('.homeblock').click(function(){
 
         $('.single').show()
     }
+
     img.src = 'https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}'
 
 
-     
-    
+            var images = new Array()
+            function preload(url) {
+                    var image = new Image()
+                    image.src = url
+                    images.push(image)       
+            }
+            
+            {% for image in photos %}
+            preload('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{image.display}}')
+            {% endfor %}
     
 
 {% endblock %}

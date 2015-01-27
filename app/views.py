@@ -114,6 +114,7 @@ class hardscapePhotoView(DetailView):
         context['prev'] = self.photo.prev_photo_hardscape
         context['prefix'] = "hardscape"
         context["company"] = self.photo.hardscape
+        context['photos'] = self.photo.landscape.pictures.all()
         return context
 
 class landscapePhotoView(DetailView):
@@ -130,6 +131,7 @@ class landscapePhotoView(DetailView):
         context['prefix'] = "landscape"
         context['next'] = self.photo.next_photo_landscape
         context['prev'] = self.photo.prev_photo_landscape
+        context['photos'] = self.photo.landscape.pictures.all()
         context["company"] = self.photo.landscape
 
         return context
