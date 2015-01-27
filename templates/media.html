@@ -16,7 +16,21 @@ Buttercup Design Group
 {% for magazine in media %}
 <img class="magazine-cover" data-order="{{magazine.order}}"src="  
 https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ magazine.cover_image }}"> 
+
 {% endfor %}
+    {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    {% if page_obj.previous_page_number == 1%}
+                    <a class="front-link" href="/media">PREVIOUS</a>
+                    {%else %}
+                    <a class="front-link" href="/media/page={{ page_obj.previous_page_number }}">PREVIOUS</a>
+
+                    {% endif %}
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="front-link" href="/media?page={{ page_obj.next_page_number }}">MORE</a>
+                {% endif %}
+    {% endif %}
 {% include "includes/navbar.html" with media=True%}
 </div>
 

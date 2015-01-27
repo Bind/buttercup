@@ -143,6 +143,7 @@ img.bottom{
   margin-right: 1em;
   font-size: 11px;
 }
+
 .front-link{
 font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
@@ -244,7 +245,7 @@ min-height: 620px;
 }
 .magazine-gallery{
 width: 792px;
-
+position:relative;
     padding-top:1.5em;
 
 margin: 2em auto;
@@ -254,6 +255,14 @@ min-height: 676px;
   position:absolute;
   width:792px;
   bottom:-5em;
+}
+.magazine-gallery > .front-link{
+  position:absolute;
+  bottom:3em;
+  right:0em;
+  float:right;
+  margin-right:1.5em;
+  font-size: 11px;
 }
 .magazine-cover{
   cursor:pointer;
