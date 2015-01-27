@@ -33,6 +33,8 @@ class photogroup(models.Model):
         order = models.PositiveIntegerField( max_length=4, default=1)
 
 
+
+
         @cached_property
         def get_hero(self):
             r  = self.pictures.get(hero=True)
@@ -55,12 +57,22 @@ class landscape(photogroup):
             )
         architecture = models.CharField(max_length=1, choices=ARCHITECTURE_TYPES, default = 'L')
 
+        @cached_property
+        def get_photos(self):
+            photos =  self.pictures.all()
+            return photos
+            
 class hardscape(photogroup):
         ARCHITECTURE_TYPES = (
             ('L', 'LandScapes'),
             ('H', 'HardScapes'),
             )
         architecture = models.CharField(max_length=1, choices=ARCHITECTURE_TYPES, default = 'L')    
+
+        @cached_property
+        def get_photos(self):
+            photos =  self.pictures.all()
+            return photos
 
 # Create your models here.
 class location(models.Model):
@@ -73,6 +85,10 @@ class location(models.Model):
         slug_url = AutoSlugField(populate_from=['name'],
                          overwrite=True, null=True, blank=True)
         detail = models.CharField(max_length=512, null=True, blank=True)
+
+
+
+
 
         @cached_property
         def get_hero(self):
