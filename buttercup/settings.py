@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'storages',
     'django_extensions',
     'app',
+    'pipeline',
     'sorl.thumbnail',
 )
 
@@ -81,6 +82,7 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+from pipeline import *
 
 LANGUAGE_CODE = 'en-us'
 

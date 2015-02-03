@@ -114,7 +114,7 @@ class photo(models.Model):
         height = models.PositiveIntegerField()
         width = models.PositiveIntegerField()
 
-        @property
+        @cached_property
         def location_slug(self):
             if self.landscape:
                 return self.landscape.slug_url
@@ -122,7 +122,7 @@ class photo(models.Model):
                 return self.hardscape.slug_url
             else: 
                 return None
-        @property
+        @cached_property
         def gallery_name(self):
             if self.landscape:
                 return self.landscape.name

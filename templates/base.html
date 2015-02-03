@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-{% load static %}
+{% load static compressed %}
 <html class="no-js">
   <!--<![endif]-->
   <head>
@@ -17,9 +17,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=945px, initial-scale=.3, maximum-scale=1" >
     <meta name="apple-mobile-web-app-capable" content="yes">
-      <link href="/static/css/base.css" rel="stylesheet" type="text/css">
-
-
+    {% compressed_css 'screen' %}
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <body style="background-color:rgb(185, 0, 25);">
@@ -34,8 +32,8 @@
   </div>
 
   </body>
-
-    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+    {% compressed_js 'vendor' %}
+    {% compressed_js 'app' %}
 <script type="text/javascript" >
   $(document).ready(function() {
 
