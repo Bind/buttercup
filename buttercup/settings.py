@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'app',
     'pipeline',
+    'imagekit',
     'sorl.thumbnail',
 )
 

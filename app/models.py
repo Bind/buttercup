@@ -1,6 +1,7 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
 from django.utils.functional import cached_property
+from imagekit.models import ProcessedImageField
 from sys import *
 
 def upload_to_s3(instance, filename):

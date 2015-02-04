@@ -19,7 +19,7 @@ body{position:relative;}
     }
 </style>
 <div class="single-gallery">
-    <div class="single" style="background-image:url('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display }}')" >
+    <div class="single" style="background-image:url('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display_optimized }}')" >
 <a class="image-link single-page"><div class="backbutton"></div></a>
     {% if prev %}
     <div class="prev-photo"> </div>
@@ -90,7 +90,7 @@ $('.homeblock').click(function(){
             }
             
             {% for image in photos %}
-            preload('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{image.display}}')
+            preload('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{image.display_optimized}}')
             {% endfor %}
     
 
