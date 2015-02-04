@@ -86,11 +86,14 @@ $('.homeblock').click(function(){
             function preload(url) {
                     var image = new Image()
                     image.src = url
+                    image.onload = function(){
+                    console.log(url + " finished preloading")
+                    }
                     images.push(image)       
             }
             
             {% for image in photos %}
-            preload('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{image.display_optimized}}')
+            preload('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{image.display}}')
             {% endfor %}
     
 
