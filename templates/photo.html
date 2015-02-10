@@ -9,13 +9,9 @@ Buttercup Design Group
 {% block content %}
 <style>
 body{position:relative;}
-    .main{
-
-    }
     .content-wrapper{
         position:absolute;
         width:100%;
-        left:;
     }
 </style>
 <div class="single-gallery">
@@ -76,7 +72,9 @@ $('.homeblock').click(function(){
          $('.single').css('height', (height +"px"))
          var left = {{photo.width}}/{{photo.height}} * height/2
          }
-
+            {% for image in photos %}
+            preload('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{image.display}}')
+            {% endfor %}
         
     }
     $('.single').show()
@@ -94,9 +92,7 @@ $('.homeblock').click(function(){
                     images.push(image)       
             }
             
-            {% for image in photos %}
-            preload('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{image.display}}')
-            {% endfor %}
+
     
 
 {% endblock %}
