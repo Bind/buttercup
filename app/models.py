@@ -164,7 +164,7 @@ class photo(models.Model):
             else: 
                 return False 
 
-        @cahced_property
+        @cached_property
         def next_photo_landscape(self):
             next = self.order
             next = next + 1
