@@ -1,7 +1,7 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
 from django.utils.functional import cached_property
-from imagekit.models import ProcessedImageField
+from imagekit.models import ProcessedImageField, ImageSpecField
 from sys import *
 
 def upload_to_s3(instance, filename):
@@ -9,6 +9,16 @@ def upload_to_s3(instance, filename):
     from django.utils.timezone import now
     filename_base, filename_ext = os.path.splitext(filename)
     return 'photos/%s%s%s%s' % (instance.gallery_name.replace (" ", "-").replace("'", "-").replace("&",""), 
+        instance.name,
+        filename_base,
+        filename_ext.lower(),
+    )
+
+def upload_optimized(instance, filename):    
+    import os
+    from django.utils.timezone import now
+    filename_base, filename_ext = os.path.splitext(filename)
+    return 'opt/photos/%s%s%s%s' % (instance.gallery_name.replace (" ", "-").replace("'", "-").replace("&",""), 
         instance.name,
         filename_base,
         filename_ext.lower(),
@@ -105,7 +115,7 @@ class photo(models.Model):
         slug_url = AutoSlugField(populate_from=['name', 'display'],
                          overwrite=True, null=True, blank=True)
         name = models.CharField(max_length=255)
-        display = models.ImageField(upload_to=upload_to_s3, blank=True,null=True, height_field="height", width_field="width")
+        display = ProcessedImageField(upload_to=upload_optimized, blank=True,null=True, height_field="height", width_field="width", format='JPEG', options={'quality': 60})
         order = models.IntegerField(null=True, blank=True)
         location = models.ForeignKey(location, null=True, blank=True, related_name='pictures')
         detail = models.CharField(max_length=512, null=True, blank=True)

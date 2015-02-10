@@ -95,6 +95,7 @@ USE_L10N = True
 USE_TZ = True
 
 #Memcagche config
+"""
 os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
 os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
 os.environ['MEMCACHE_PASSWORD'] = os.environ.get('MEMCACHIER_PASSWORD', '')
@@ -113,7 +114,7 @@ CACHES = {
             '_poll_timeout': 2000
         }
     }
-}
+}"""
 
 CACHE_MIDDLEWARE_SECONDS = 600
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
