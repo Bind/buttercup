@@ -154,7 +154,7 @@ class photo(models.Model):
             else: 
                 return None
 
-        @property
+        @cached_property
         def next_photo_hardscape(self):
             next = self.order
             next = next + 1
@@ -164,7 +164,7 @@ class photo(models.Model):
             else: 
                 return False 
 
-        @property
+        @cahced_property
         def next_photo_landscape(self):
             next = self.order
             next = next + 1
@@ -174,7 +174,7 @@ class photo(models.Model):
             else: 
                 return False 
 
-        @property
+        @cached_property
         def prev_photo_hardscape(self):
             next = self.order
             next = next - 1
@@ -184,7 +184,7 @@ class photo(models.Model):
             else: 
                 return False 
 
-        @property
+        @cached_property
         def prev_photo_landscape(self):
             next = self.order
             next = next - 1
