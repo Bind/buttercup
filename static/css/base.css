@@ -435,7 +435,7 @@ background-position: center bottom;
 
 }
 .backbutton{
-  background-image: url('../imgs/noun_15364.jpg');
+  background-image: url('../imgs/noun_15364.png');
   opacity:.5;
   height: 24px;
   width: 24px;
@@ -464,7 +464,7 @@ cursor:pointer;
 }
 
 .next-photo, .prev-photo{
-  background-image:url('../imgs/nav_arrow.jpg');
+  background-image:url('../imgs/nav_arrow.png');
     -webkit-filter: invert(100%);
   filter: invert(100%);
   background-size:cover;
