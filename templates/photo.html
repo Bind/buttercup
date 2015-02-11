@@ -67,7 +67,7 @@ $('.homeblock').click(function(){
     $(".content-wrapper").css('position', 'inherit')
 
     var img = new Image()
-    img.src = "{% thumbnail photo.display '1000x750' %}:
+    img.src = "{% thumbnail photo.display '1000x750' %}"
     img.onload = function(){
     console.log("main image rendered")
        $('.single').animate({ opacity:"1"}, 300);
