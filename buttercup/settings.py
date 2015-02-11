@@ -20,7 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '@=_o#jeg+=pn*qq3f6)xwimtmvyj$7a3iw*q$@5l()kqq4#f21'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+DEBUG = False
 THUMBNAIL_DEBUG=True
 TEMPLATE_DEBUG = True
 
@@ -41,7 +42,9 @@ INSTALLED_APPS = (
     'app',
     'pipeline',
     'sorl.thumbnail',
+    'debug_toolbar'
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,6 +56,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware'
 )
 
@@ -93,7 +97,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 #Memcagche config
 os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
 os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
@@ -145,4 +148,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
+INTERNAL_IPS = ('127.0.0.1',"::8000")

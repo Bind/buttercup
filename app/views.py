@@ -107,14 +107,18 @@ class hardscapePhotoView(DetailView):
     slug_url_kwarg = "photo_number"
     context_object_name = "photo"
 
+    def get_queryset(self):
+        queryset = super(hardscapePhotoView, self).get_queryset()
+        queryset.select_related('next_photo_hardscape', 'prev_photo_hardscape', 'hardscape').filter(slug_url=self.kwargs['photo_number'])
+        return queryset.distinct()
+
+
     def get_context_data(self, **kwargs):
         context = super(hardscapePhotoView, self).get_context_data(**kwargs)
-        self.photo = get_object_or_404(photo, slug_url=self.kwargs['photo_number'])
-        context['next'] = self.photo.next_photo_hardscape
-        context['prev'] = self.photo.prev_photo_hardscape
+        context['next'] = context['photo'].next_photo_hardscape
+        context['prev'] = context['photo'].prev_photo_hardscape
         context['prefix'] = "hardscape"
-        context["company"] = self.photo.hardscape
-        context['photos'] = self.photo.hardscape.get_photos
+        context["company"] = context['photo'].hardscape
         return context
 
 class landscapePhotoView(DetailView):
@@ -124,16 +128,19 @@ class landscapePhotoView(DetailView):
     slug_url_kwarg = "photo_number"
     context_object_name = "photo"
 
+    def get_queryset(self):
+        queryset = super(landscapePhotoView, self).get_queryset()
+        queryset.select_related('next_photo_landscape', 'prev_photo_landscape', 'landscape').filter(slug_url=self.kwargs['photo_number'])
+        return queryset.distinct()
 
     def get_context_data(self, **kwargs):
         context = super(landscapePhotoView, self).get_context_data(**kwargs)
-        self.photo = get_object_or_404(photo, slug_url=self.kwargs['photo_number'])
-        context['prefix'] = "landscape"
-        context['next'] = self.photo.next_photo_landscape
-        context['prev'] = self.photo.prev_photo_landscape
-        context['photos'] = self.photo.landscape.get_photos
-        context["company"] = self.photo.landscape
 
+        context['prefix'] = "landscape"
+        context['next'] = context['photo'].next_photo_landscape
+        context['prev'] = context['photo'].prev_photo_landscape
+        """context['photos'] = self.photo.landscape.get_photos"""
+        context["company"] = context['photo'].landscape
         return context
 
 
