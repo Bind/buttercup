@@ -16,7 +16,7 @@ body{position:relative;}
 </style>
 <div class="single-gallery">
    {% if not photo.portrait %}
-    <div class="single" style="background-image:url('{% thumbnail photo.display '1200x900' %}')" >
+    <div class="single" style="background-image:url('{% thumbnail photo.display '1000x750' %}')" >
     {% else %}
     <div class="single" style="background-image:url('https://s3-us-west-2.amazonaws.com/buttercupdesigngroup/{{ photo.display}}')" >
     {%endif %}
