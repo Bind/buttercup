@@ -77,7 +77,7 @@ $('.homeblock').click(function(){
          var left = {{photo.width}}/{{photo.height}} * height/2
          }
             {% for image in photos %}
-            //preload('{{ image.thumbnail.url}}')
+            preload('{{ image.thumbnail.url}}')
             {% endfor %}
         
     }
