@@ -47,9 +47,9 @@ INSTALLED_APPS = (
 
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.gzip.GZipMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,7 +121,7 @@ CACHES = {
 }
 
 
-CACHE_MIDDLEWARE_SECONDS = 600
+CACHE_MIDDLEWARE_SECONDS = 60000
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 TEMPLATE_LOADERS = (
