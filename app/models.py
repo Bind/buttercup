@@ -117,7 +117,7 @@ class photo(models.Model):
                          overwrite=True, null=True, blank=True)
         name = models.CharField(max_length=255)
         display = ProcessedImageField(upload_to=upload_optimized, blank=True,null=True, height_field="height", width_field="width", format='JPEG', options={'quality': 60})
-        thumbnail = ImageSpecField(source=display, processors=[ResizeToFill(1200, 900)], format='JPEG', options={'quality':60})
+        thumbnail = ImageSpecField(source='display', processors=[ResizeToFill(1200, 900)], format='JPEG', options={'quality':60})
         order = models.IntegerField(null=True, blank=True)
         location = models.ForeignKey(location, null=True, blank=True, related_name='pictures')
         detail = models.CharField(max_length=512, null=True, blank=True)

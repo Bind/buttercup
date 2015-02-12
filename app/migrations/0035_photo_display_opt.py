@@ -26,6 +26,7 @@ class Migration(migrations.Migration):
             field=imagekit.models.fields.ProcessedImageField(default=' ', upload_to=app.models.upload_optimized),
             preserve_default=False,
         ),
-        migrations.RunPython(processImages),
+        
 
     ]
+

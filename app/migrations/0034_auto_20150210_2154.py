@@ -17,5 +17,5 @@ class Migration(migrations.Migration):
         ('app', '0033_auto_20150108_2210'),
     ]
 
-    operations = [migrations.RunPython(processImages)
+    operations = [
     ]
