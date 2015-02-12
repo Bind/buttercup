@@ -119,6 +119,12 @@ CACHES = {
     }
 }
 
+TEMPLATE_LOADERS= (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    )
+
+
 CACHE_MIDDLEWARE_SECONDS = 600
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
