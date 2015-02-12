@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'app',
     'pipeline',
     'sorl.thumbnail',
+    'debug_toolbar'
 )
 
 
@@ -157,5 +158,5 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-
+)
 
