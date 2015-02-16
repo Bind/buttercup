@@ -24,8 +24,8 @@ class HardscapeAdmin(admin.ModelAdmin):
         inlines = [PhotoInline]
 
 class MediaAdmin(admin.ModelAdmin):
-        list_display = ('order')
-        list_editable = ('order')
+        list_display = ('order',)
+        list_editable = ('order',)
 
 
 
