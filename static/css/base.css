@@ -361,7 +361,6 @@ transition: opacity 2s;
 margin:0;
 height:calc(100%);
 color:transparent;
-  opacity:.7 !important;
 }
 .hero-image-wrapper .image:hover{
   color:white;
