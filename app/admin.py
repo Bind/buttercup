@@ -23,12 +23,16 @@ class HardscapeAdmin(admin.ModelAdmin):
         list_display = ('name',)
         inlines = [PhotoInline]
 
+class MediaAdmin(admin.ModelAdmin):
+        list_display = ('order')
+        list_editable = ('order')
+
 
 
 admin.site.register(landscape, LandscapeAdmin)
 admin.site.register(hardscape, HardscapeAdmin)
 admin.site.register(photo, PhotoAdmin)
-admin.site.register(media)
+admin.site.register(media, MediaAdmin)
 admin.site.register(location, LocationAdmin)
 
 
