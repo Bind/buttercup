@@ -320,10 +320,7 @@ min-height: 676px;
   letter-spacing:initial;
 
 }
-.hero-image-wrapper p{
-  color:white;
-  opacity:1;
-}
+
 .hero-image-wrapper:nth-of-type(3n+1){
   margin-right:0;
 }
@@ -345,6 +342,10 @@ min-height: 676px;
 -o-transition: color .5s;
 transition: color .5s;
 
+}
+.hero-image-wrapper p{
+  color:white;
+  opacity:1;
 }
 .hero-image-wrapper .image{
   background-size:cover;
