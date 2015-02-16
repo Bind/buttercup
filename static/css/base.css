@@ -320,7 +320,7 @@ min-height: 676px;
   letter-spacing:initial;
 
 }
-.hero-image-wrapper:hover p{
+.hero-image-wrapper p{
   color:white;
   opacity:1;
 }
