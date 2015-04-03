@@ -11,7 +11,8 @@ from django.views.decorators.cache import cache_page
 def index(request):
     template = loader.get_template('index.html')
     context = RequestContext(request, {
-        'title': 'index'
+        'title': 'index',
+        'index':'index'
         })
     return HttpResponse(template.render(context))
 
