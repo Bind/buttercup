@@ -100,7 +100,7 @@ USE_TZ = True
 
 
 #Memcagche config
-"""
+
 os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
 os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
 os.environ['MEMCACHE_PASSWORD'] = os.environ.get('MEMCACHIER_PASSWORD', '')
@@ -123,7 +123,7 @@ CACHES = {
 
 
 CACHE_MIDDLEWARE_SECONDS = 60000
-CACHE_MIDDLEWARE_KEY_PREFIX = ''"""
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 TEMPLATE_LOADERS = (
     ('django.template.loaders.cached.Loader', (
@@ -146,7 +146,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-#DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
