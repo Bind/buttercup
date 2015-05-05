@@ -10,6 +10,7 @@ body{
     }
 .owl-carousel{
   margin: 0 auto;
+  margin-top:1em;
 }
 .bottom-bg{
         background:url('../imgs/updated_bg.jpg');
@@ -428,7 +429,7 @@ background-position: center bottom;
   background-repeat: no-repeat;
   background-position: center;
 width: 100%;
-height:550px;
+height:645px;
 color:transparent;
 }
 .image-link{
@@ -542,4 +543,40 @@ float: right;
 .contact-body{
   margin:5px 0 ;
 }
+.row-location-navbar{
+  margin-top: -5em;
+  text-align:right;
+}
 
+
+.owl-next, .owl-prev{
+  background-image:url('../imgs/nav_arrow.png') !important;
+  background-color:transparent !important;
+  color: transparent !important;
+  filter: invert(100%) !important;
+      -webkit-filter: invert(100%);
+  border-radius: 0px !important;
+  background-size:contain !important;
+  background-repeat: no-repeat !important;
+  top:50%;
+  width: 45px;
+  height:45px;
+  opacity:.5;
+  cursor:pointer;
+}
+.owl-next:hover, .owl-prev:hover{
+  opacity:.7;
+}
+
+.owl-prev{
+  left:-4em;
+  z-index:1;
+  -webkit-backface-visibility:hidden;
+       -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+
+}

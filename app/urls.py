@@ -12,8 +12,6 @@ urlpatterns = patterns('',
     url(r'^landscape/(?P<name>[\w-]+)/$', cache_page(6000*15)(views.landscapeDetailView.as_view())),
     url(r'^hardscapes/', cache_page(6000*15)(views.HardScapeView.as_view())),
     url(r'^landscapes/', cache_page(6000*15)(views.LandScapeView.as_view())),
-    url(r'^hardscape/(?P<name>[\w-]+)/(?P<photo_number>[\w-]+)/$',cache_page(6000*15)( views.hardscapePhotoView.as_view())),
-    url(r'^landscape/(?P<name>[\w-]+)/(?P<photo_number>[\w-]+)/$', cache_page(6000*15)(views.landscapePhotoView.as_view())),
     )
 
 
