@@ -8,6 +8,9 @@ body{
     color:white;
     font-family: arial;
     }
+.owl-carousel{
+  margin: 0 auto;
+}
 .bottom-bg{
         background:url('../imgs/updated_bg.jpg');
         height:500px;
@@ -109,7 +112,7 @@ h5{
     vertical-align: top;
     display: inline;
     float: left;
-    margin-left: calc( 50%% - 490px);
+    margin-left: calc( 50% - 490px);
     padding-top: 1em;
     font-size:16px;
     width: 400px;
@@ -420,7 +423,14 @@ background-position: center bottom;
 .single img{
   width: 100%;
 }
-
+.owl-carousel .image{
+    background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+width: 100%;
+height:550px;
+color:transparent;
+}
 .image-link{
   font-family: arial;
   text-transform: uppercase;

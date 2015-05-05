@@ -8,17 +8,20 @@ Buttercup Design Group
 {% block content %}
 <div class="location-gallery">
 <div class="photogroup-nav">
-<a class="image-link" href="/{{prefix}}s"><div class="backbutton"></div></a>
+<a class="image-link" href="/{{prefix}}s"><div class="backbutton">  </div></a>
 {{location.name}}
 
 </div>
+
+<div class="owl-carousel">
 {% for photo in photos%}
-<div class="hero-image-wrapper">
+<div class="">
     <a href="/{{prefix}}/{{location.slug_url}}/{{photo.slug_url}}">
-        <div class="image" style="background-image:url('http://d1uexm19i80p35.cloudfront.net/{{ photo.display }}');"></div>
+        <div class="image" style="background-image:url({{photo.thumbnail.url}});"></div>
     </a>
 </div>
 {% endfor %}
+</div>
 
 {% if is_paginated %}
                 {% if page_obj.has_previous %}
@@ -32,6 +35,12 @@ Buttercup Design Group
 {% endblock content %}
 {% block script %}
 
+$(".owl-carousel").owlCarousel({
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:true
+});
 $('.homeblock').click(function(){
     window.location.href = '/';
 })
